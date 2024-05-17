@@ -1,6 +1,8 @@
 name: Build LaTeX and deploy on GitHub Releases
 on:
   push:
+    branches: 
+      - main
 
 jobs:
   Setup-Compile-Deploy:
