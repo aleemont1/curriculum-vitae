@@ -74,7 +74,7 @@
 
 
 \begin{document}
-\setlength{\footskip}{5pt}.
+\setlength{\footskip}{5pt}
 %----------HEADING-----------------
 \centering\textbf{\Large Alessandro Monticelli} \\
   \vspace{0.25in}
@@ -83,65 +83,57 @@
         \href{https://www.linkedin.com/in/ale-mont}{{\faLinkedin} \underline{Alessandro Monticelli}} \quad
         \href{https://github.com/aleemont1}{{\faGithub} \underline{aleemont1}}}
 
-
-%-----------EDUCATION-----------------
-\section{Education}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {"Alma Mater Studiorum" - University of Bologna}{Cesena (FC), Italy}
-      {Bachelor of Science in Computer Science and Engineering}{September 2021 -- Ongoing}
-      \resumeItemListStart
-          \resumeItem{Relevant Coursework}{Object-Oriented Programming (Java, C\#), High Performance Computing (OpenMP, Open MPI, CUDA, SIMD), 
-          Embedded Systems and Internet of Things (Arduino, ESP32 (rtOS), Raspberry Pi), Systems Integration and Virtualization (Docker, Vagrant, Kubernetes, Active Directory), Telecommunication Networks}
-      \resumeItemListEnd
-    \resumeSubheading
-      {I.T.T. "G. Giorgi"}{Brindisi (BR), Italy}
-      {High School Diploma in ICT and Telecommunications}{September 2016 -- June 2021}
-  \resumeSubHeadingListEnd
-
 %-----------EXPERIENCE-----------------
-\section{Experience}
+\section{\textbf{Experience}}
 \resumeSubHeadingListStart
-    \resumeSubheading{Aurora Rocketry Team - Unibo}{Forlì(FC), Italy}{Embedded Software Engineer}{April 2024 -- Current}
-    \resumeItemListStart
-        \resumeItem{Technologies used} {C, C++, LoRa}
+    \resumeSubheading
+      {Undergraduate Researcher}{Cesena, Italy}
+      {Department of Engineering and Computer Science - University of Bologna}{July 2025 - Current}
+      \resumeItemListStart
+        \resumeItem{Technologies used} {C++, LoRa\textsuperscript{\textcopyright}}
         \resumeItem{Description}
-        {Student organization of the University of Bologna.
-	        I took the technical lead for the embedded system engineering process for the avionics.
-	        The aim is to participate in EuRoC'25, the European Rocketry Challenge.}
+          {
+            \begin{itemize}
+              \item Designed a proprietary segmented-packet protocol over LoRa\textsuperscript{\textcopyright} for reliable point-to-point telemetry, enhancing payload capacity and transmission integrity for aerospace applications.
+              \item Conducted experimental field tests on a sounding rocket, achieving 95\% packet reconstruction success at 500m with a throughput of 540 Byte/s.
+              \item Authoring a research paper under the supervision of prof. Andrea Piroddi, for submission to IEEE, extending LoRa\textsuperscript{\textcopyright} to support segmented payloads with applications in multi-agent systems and point-to-point communication.
+            \end{itemize}
+          } 
+      \resumeItemListEnd
+    \resumeSubheading{Project Manager}{Forlì, Italy}{Aurora Rocketry Team - Unibo}{April 2024 -- Current}
+    \resumeItemListStart
+        \resumeItem{Technologies used} {C++, LoRa\textsuperscript{\textcopyright}, Python}
+        \resumeItem{Description}
+        {\begin{itemize}
+          \item Leading the development of an ESP32-based flight computer for a student sounding rocket, managing a team of 7 developers.
+          \item Oversaw telemetry system integration with a custom LoRa\textsuperscript{\textcopyright} protocol, ground station interface, and flight algorithms.
+          \item System became the basis of my bachelor thesis, culminating in successful field validation during static tests and simulations.
+        \end{itemize}}
     \resumeItemListEnd
-    \resumeSubheading{SPOT. Digital Made Simple }{Cesena(FC), Italy}{Embedded Software Engineer Intern}{February 2024 -- May 2024}
+    \resumeSubheading{Embedded Software Engineer Intern}{Cesena, Italy}{SPOT. Digital Made Simple}{February 2024 -- May 2024}
     \resumeItemListStart
         \resumeItem{Technologies used} {Python, .NET 8.0, NuGet}
-        \resumeItem{Completed tasks}
-        {Refactoring of an IoT platform to manage smart cinema seats.
-          Reversed-engineered the driver of the RF module, extracting low-level commands for the control units.
-          Engineered a full-fledged simulator of the system to create scenarios and integrations.}
+        \resumeItem{Description}
+        {\begin{itemize}
+          \item Reverse-engineered RF module drivers for smart cinema seats, extracting low-level control commands.
+          \item Designed and developed a simulator replicating the IoT system behavior, reducing integration testing time by 60\%.
+          \item Contributed to the refactoring of the IoT platform backend (Python, .NET 8.0).
+        \end{itemize}
+        }
     \resumeItemListEnd
-    \resumeSubheading{UBM - Unibo Motorsport Team}{Bologna(BO), Italy}{IT department - Software developer}{October 2023 -- April 2024}
+    \resumeSubheading{Software developer}{Bologna, Italy}{UBM - Unibo Motorsport Team}{October 2023 -- April 2024}
     \resumeItemListStart
         \resumeItem{Technologies used} {Python, Vue.js, MySQL}
-        \resumeItem{Completed tasks}
-        {Implemented connection pooling for the database, enhancing connections stability and performance. Enhanced the QR code scanning for product placement in warehouses.}
+        \resumeItem{Description}
+        {\begin{itemize}
+          \item Enhanced database connection pooling, improving connection stability and query performance.
+          \item Optimized QR code scanning algorithms for product placement in warehouses, increasing detection reliability.
+        \end{itemize} 
+        }
     \resumeItemListEnd
 \resumeSubHeadingListEnd
 
 \begin{comment}    
-    \resumeSubheading
-      {UBM - Unibo Motorsport Team}{Bologna, Italy}
-      {Software developer}{Oct. 2023 - Current}
-      \resumeItemListStart
-        \resumeItem{Python}
-          {I improved the back-end of the application, implementing new features, 
-            documenting the code and fixing bugs.
-            In particular:}
-            \resumeItemListStart
-                \resumeItem{Connection pooling}
-                    {I implemented a connection pool to the database, to avoid the overhead of creating a new connection every time a request is made.}
-            \resumeItemListEnd
-      \resumeItemListEnd
-
-  
     \resumeSubheading
       {Other Company}{Location}
       {Position}{From - To}
@@ -163,6 +155,22 @@
       \resumeItemListEnd
 \end{comment}
 
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {"Alma Mater Studiorum" - University of Bologna}{Cesena (FC), Italy}
+      {Bachelor of Science in Computer Science and Engineering}{September 2021 -- July 2025}
+      \resumeItemListStart
+          \resumeItem{Thesis}{"Development and Optimization of a Telemetry System for Rockets - Architecture and Data Transmission using LoRa\textsuperscript{\textcopyright}"}
+          \resumeItem{Relevant Coursework}{Object-Oriented Programming (Java, C\#), High Performance Computing (OpenMP, Open MPI, CUDA, SIMD), 
+          Embedded Systems and Internet of Things (Arduino, ESP32 (rtOS), Raspberry Pi), Systems Integration and Virtualization (Docker, Vagrant, Kubernetes, Active Directory), Telecommunication Networks}
+      \resumeItemListEnd
+    \resumeSubheading
+      {I.T.T. "G. Giorgi"}{Brindisi (BR), Italy}
+      {High School Diploma in ICT and Telecommunications}{September 2016 -- June 2021}
+  \resumeSubHeadingListEnd
+
 %-----------LANGUAGES-----------------
 \begin{comment}
 \section{Languages}
@@ -178,27 +186,24 @@
 \section{Skills}
 \resumeSubHeadingListStart
   \item{
-    \textbf{Programming}{: Good knowledge of Java, C\# (.NET 8.0), C++, Python and C. 
-      Good understanding of the OOP principles, design patterns, and software architecture.
-      Knowledge of High Performance Computing technologies (OpenMP, Open MPI, CUDA, SIMD).}
+    \textbf{Programming}{: C++, C, Python, Java, C\# (.NET 8.0). }
     \hfill
     }
   \item{
-    \textbf{Embedded Systems \& IoT}{: Experience with Arduino, ESP32 and Raspberry Pi. Good understanding of RTOS, task scheduling and error handling.
-                                        Currently working on a flight computer of a rocket for the Aurora Rocketry Team.}
+    \textbf{Embedded Systems \& IoT}{: ESP32 (FreeRTOS), Arduino, Raspberry Pi, sensor fusion, RTOS task scheduling.}
     \hfill
     }
   \item{
-    \textbf{Operating Systems}{: Proficient in Linux (desktop and server) and Windows Server. I can configure different services and manage users and permissions.}
-      \hfill
-    }
+    \textbf{Networking \& Protocols}{: LoRa\textsuperscript{\textcopyright} custom protocols, MQTT, HTTP, Active Directory, DNS/DHCP configuration}
+  }
   \item{
-    \textbf{Network \& Systems Management}{: Active Directory deployment and management, domain joining, DNS and DHCP setup, GPO management. 
-      Docker containerization, multi-container applications, Kubernetes basics. NextCloud deployment and management.}
-    \hfill
-    }
+    \textbf{High Performance Computing}{: OpenMP, OpenMPI, CUDA, SIMD}
+  }
   \item{
-      \textbf{Version Control \& CI/CD}{: Basic Git and CI/CD pipelines with GitHub Actions.}
+    \textbf{Systems Integration}{: Docker, Kubernetes (basic), CI/CD pipelines with GitHub Actions}
+  }
+  \item{
+    \textbf{Operating Systems}{: Linux (desktop \& server), Windows Server (AD, GPOs).}
       \hfill
     }
   \resumeSubHeadingListEnd
@@ -207,24 +212,21 @@
 \section{Projects}
   \resumeSubHeadingListStart
   \resumeSubItem{\href{https://github.com/aleemont1/OKINsimulator}{OKIN Simulator}}
-      {Full-fledged simulator of a smart cinema hall, based on a real IoT implementation.
-       I engineered and developed the simulator from scratch, using different programming patterns and a modular-by-design approach.
-       The simulator is able to completely replace the physical implementation, communicating with the in-cloud solution developed 
-       by the company.}
+      {Simulator of smart cinema seat control systems, replicating real-world device interactions with a modular architecture in Python.}
     \resumeSubItem{\href{https://github.com/aleemont1/esiot-23-24-assignment3/}{River Monitoring System}}
-      {Development of a River Monitoring System prototype using ESP32 and Arduino UNO.
-       I engineered and developed the River Monitoring Subsystem, implementing data acquisition and
-       transmission to the MQTT server, using FreeRTOS task scheduling, along with robust connection and error handling.}
+      {Developed a river monitoring subsystem for data acquisition and MQTT transmission, implementing task scheduling and robust error handling.}
     \resumeSubItem{\href{https://github.com/aleemont1/esiot-23-24-assignment2/}{Smart Car Washing}}
-      {Development of a Smart Car Washing prototype using Arduino UNO. 
-      I led the backend development, engineering the FSM, implementing the scheduler, and designing all the task APIs. 
-      Other key contributions include establishing the task dependency system and implementing critical tasks.}
+      {Led backend development for a smart car washing prototype, engineering task APIs, schedulers, and dependency systems.}
     \resumeSubItem{\href{https://github.com/progetto-oop-22-23/OOP22-HOMER}{HOMER}}
-      {Development of a smart home emulator in Java. 
-        While my primary programming role was secondary, I took a lead in the analysis and software engineering phases. 
-        I engineered the architecture and implemented features such as the electricity monitoring system, 
-        along with the design of smart and automatic outlets.}
+      {Designed system architecture and developed energy monitoring features and smart automation for a Java-based smart home simulator.}
   \resumeSubHeadingListEnd
+
+%--------PUBLICATIONS--------
+\section{Publications}
+\resumeSubHeadingListStart
+\item \textbf{Bachelor Thesis} {\href{https://aleemont1.github.io/bachelor-thesis/pdf/tesi.pdf}{"Development and Optimization of a Telemetry System for Rockets – Architecture and Data Transmission using LoRa\textsuperscript{\textcopyright}"}}
+\item \textbf{Research Paper (manuscript in preparation)} {Monticelli A., “A Data Segmentation Protocol for LoRa\textsuperscript{\textcopyright} Transmission” expected submission to IEEE, 2025.}
+\resumeSubHeadingListEnd
 
 %--------CERTIFICATES--------
 \section{Certificates}
