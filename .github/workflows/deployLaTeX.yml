@@ -19,7 +19,7 @@ jobs:
     name: Build PDF
     steps:
       - name: Checkout code
-        uses: actions/checkout@main
+        uses: actions/checkout@v4
 
       - name: Compile resume
         uses: xu-cheng/latex-action@v3
@@ -29,7 +29,7 @@ jobs:
           args: -xelatex -file-line-error -halt-on-error -interaction=nonstopmode
 
       - name: Generate build artifact
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@v4
         with:
           name: build-pdf
           path: resume.pdf
@@ -44,22 +44,47 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout
-        uses: actions/checkout@main
+        uses: actions/checkout@v4
 
       - name: Download PDF artifact
-        uses: actions/download-artifact@main
+        uses: actions/download-artifact@v4
         with:
           name: build-pdf
           path: site/
 
+      - name: Create Index Redirect
+        run: |
+          cat > site/index.html <<EOF
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta http-equiv="refresh" content="0; url=resume.pdf">
+              <title>Redirecting to Resume...</title>
+              <style>
+                  body { font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f0f2f5; }
+                  .container { text-align: center; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+                  a { color: #0969da; text-decoration: none; font-weight: 600; }
+                  a:hover { text-decoration: underline; }
+              </style>
+          </head>
+          <body>
+              <div class="container">
+                  <p>Redirecting you to the PDF...</p>
+                  <p><a href="resume.pdf">Click here if you are not redirected automatically.</a></p>
+              </div>
+          </body>
+          </html>
+          EOF
+
       - name: Setup Pages
-        uses: actions/configure-pages@main
+        uses: actions/configure-pages@v5
 
       - name: Upload artifacts
-        uses: actions/upload-pages-artifact@main
+        uses: actions/upload-pages-artifact@v3
         with:
           path: site/
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@main
+        uses: actions/deploy-pages@v4
