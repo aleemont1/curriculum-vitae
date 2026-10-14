@@ -114,9 +114,9 @@
 \resumeItem{Description}
 {
   \begin{itemize}
-    \item Architected \href{https://github.com/aleemont1/lora-paper}{LAMP (LoRaMultiPacket)}, a C++17 hardware-agnostic transport protocol featuring a 9-byte logical header and a cumulative binary bitmap SACK-ARQ mechanism supporting payloads up to 62.2~KB.
-    \item Conducted a stochastic simulation campaign in ns-3 across 117,050 runs (LoS, Urban, Rural fading channels), proving 100\% payload delivery up to 19.1~km in LoS (SF10).
-    \item Authoring a research paper under the supervision of prof. Andrea Piroddi (currently under IEEE peer review) evaluating protocol performance against SCHC and MPLR standards.
+    \item Architected \href{https://github.com/aleemont1/LAMP}{LAMP (LoRaMultiPacket)}, a C++17 hardware-agnostic transport protocol featuring a 9-byte logical header and a single cumulative bitmap SACK-ARQ mechanism supporting payloads up to 62.2~KB.
+    \item Conducted a stochastic simulation campaign in ns-3 across 295,800 runs (static, urban, rural channels), extending 90\% PDR range by 22--35\% in urban channels and raising goodput by 14--16\% at SF7.
+    \item Validated on dual-board ESP32-S3 / SX1262 hardware bench within 7\% variance; authoring IEEE paper supervised by prof. Andrea Piroddi.
   \end{itemize}
 }
 \resumeItemListEnd
@@ -125,7 +125,7 @@
 \resumeItem{Technologies used} {C++, LoRa\textsuperscript{\textcopyright}, Python}
 \resumeItem{Description}
 {\begin{itemize}
-    \item Leading the development of an ESP32-based flight computer for \href{https://github.com/aurorarocketryteam/nemesis}{Nemesis} (sounding rocket), managing a team of 7 developers.
+    \item Leading the development of an ESP32-based flight computer for \href{https://github.com/AuroraRocketryTeam/atlas}{Atlas / Nemesis} (sounding rocket), managing a team of 7 developers.
     \item Oversaw telemetry system integration with a custom LoRa\textsuperscript{\textcopyright} protocol, ground station interface, and flight algorithms.
     \item System became the basis of my bachelor thesis, culminating in successful field validation during static tests and simulations.
   \end{itemize}}
@@ -187,8 +187,7 @@
 {Bachelor of Science in Computer Science and Engineering}{September 2021 -- July 2025}
 \resumeItemListStart
 \resumeItem{Thesis}{``Development and Optimization of a Telemetry System for Rockets - Architecture and Data Transmission using LoRa\textsuperscript{\textcopyright}''}
-\resumeItem{Relevant Coursework}{Object-Oriented Programming (Java, C\#), High Performance Computing (OpenMP, Open MPI, CUDA, SIMD),
-  Embedded Systems and Internet of Things (Arduino, ESP32 (rtOS), Raspberry Pi), Systems Integration and Virtualization (Docker, Vagrant, Kubernetes, Active Directory), Telecommunication Networks}
+\resumeItem{Relevant Coursework}{Embedded Systems and Internet of Things, Programmazione di Reti (Network Programming), Reti di Telecomunicazione (Telecommunication Networks), High Performance Computing (CUDA, OpenMP, MPI), Systems Integration and Virtualization, Object-Oriented Programming (Java, C\#)}
 \resumeItemListEnd
 \resumeSubHeadingListEnd
 
@@ -231,10 +230,12 @@
 %-----------PROJECTS-----------------
 \section{Projects}
 \resumeSubHeadingListStart
-\resumeSubItem{\href{https://github.com/aleemont1/esiot-23-24-assignment3/}{River Monitoring System}}
-{Subsystem for IoT environmental data acquisition and MQTT transmission, implementing FreeRTOS task scheduling and fault handling.}
-\resumeSubItem{\href{https://github.com/aleemont1/esiot-23-24-assignment2/}{Smart Car Washing}}
-{Led backend service development for an automated car washing prototype, engineering RESTful task APIs, schedulers, and dependency graphs.}
+\resumeSubItem{\href{https://github.com/AuroraRocketryTeam/atlas}{Atlas / Nemesis (Flight Computer)}}
+{Advanced ESP32 flight computer software for Aurora Rocketry sounding rockets, featuring real-time LoRa\textsuperscript{\textcopyright} telemetry, sensor fusion (IMU, barometer, GPS), FreeRTOS concurrency, and EKF apogee detection.}
+\resumeSubItem{\href{https://github.com/aleemont1/federated-lightweight-chat}{Federated Lightweight Chat (FLC)}}
+{Distributed peer-to-peer messaging system engineered with vector clocks, causal ordering, gossip anti-entropy protocols, SQLite replicas, and automated Docker orchestration with Traefik and Let's Encrypt.}
+\resumeSubItem{\href{https://github.com/aleemont1/TheCouncil}{TheCouncil}}
+{Open-source agentic engineering framework providing dialectic tribunal code reviews and architectural constraint lenses (Carmack, Lamport, Muratori, Ousterhout) for AI coding assistants.}
 \resumeSubItem{\href{https://github.com/progetto-oop-22-23/OOP22-HOMER}{HOMER}}
 {Designed modular OOP system architecture and developed real-time energy monitoring and automation algorithms for a Java smart-home platform.}
 \resumeSubHeadingListEnd
@@ -243,7 +244,7 @@
 \section{Publications}
 \resumeSubHeadingListStart
 \resumeSubItem{\href{https://github.com/aleemont1/lora-paper}{Journal Paper (IEEE Peer Review)}}
-{Monticelli A., Piroddi A., \textit{“Development of a Segmented, Reliable Communication Protocol for Data Transmission over Long-Range (LoRa) Links”}, target: IEEE Journal of Telecommunications, 2026.}
+{Monticelli A., Piroddi A., \textit{“LAMP: A Selective-ACK Transport Protocol for Reliable Bulk Data Transmission over LoRa Networks”}, submitted to IEEE, 2026.}
 \resumeSubItem{\href{https://aleemont1.github.io/bachelor-thesis/pdf/tesi.pdf}{Bachelor Thesis}}
 {\textit{“Development and Optimization of a Telemetry System for Rockets – Architecture and Data Transmission using LoRa\textsuperscript{\textcopyright}”}, University of Bologna, 2025.}
 \resumeSubHeadingListEnd
@@ -251,24 +252,8 @@
 %--------CERTIFICATES--------
 \section{Certificates}
 \resumeSubHeadingListStart
-\item{
-            \textbf{Cisco Networking Academy}
-            {
-              \resumeSubHeadingListStart
-              \item{\href{https://github.com/aleemont1/curriculum-vitae/blob/main/certificates/PYTHON-2020_certificate.pdf}{PCAP - Programming Essentials in Python}}
-              \item{\href{https://github.com/aleemont1/curriculum-vitae/blob/main/certificates/IOT-2018_certificate.pdf}{Introduction to the Internet of Things}}
-              \item{\href{https://github.com/aleemont1/curriculum-vitae/blob/main/certificates/GetConnected-2017_certificate.pdf}{Get Connected}}
-              \resumeSubHeadingListEnd
-            }
-      }
-\item{
-            \textbf{English}
-            {
-              \resumeSubHeadingListStart
-              \item{\href{https://github.com/aleemont1/curriculum-vitae/blob/main/certificates/English_C1.pdf}{C1 Level Certificate}}
-              \resumeSubHeadingListEnd
-            }
-      }
+\item \textbf{Cisco Networking Academy}{: \href{https://github.com/aleemont1/curriculum-vitae/blob/main/certificates/PYTHON-2020_certificate.pdf}{PCAP -- Programming Essentials in Python}, \href{https://github.com/aleemont1/curriculum-vitae/blob/main/certificates/IOT-2018_certificate.pdf}{Introduction to the Internet of Things}, \href{https://github.com/aleemont1/curriculum-vitae/blob/main/certificates/GetConnected-2017_certificate.pdf}{Get Connected}.}
+\item \textbf{English}{: \href{https://github.com/aleemont1/curriculum-vitae/blob/main/certificates/English_C1.pdf}{C1 Level Certificate}.}
 \resumeSubHeadingListEnd
 %-------------------------------------------
 \end{document}
