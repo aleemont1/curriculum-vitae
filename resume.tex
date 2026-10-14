@@ -30,8 +30,8 @@
 \addtolength{\oddsidemargin}{-0.375in}
 \addtolength{\evensidemargin}{-0.375in}
 \addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
+\addtolength{\topmargin}{-.6in}
+\addtolength{\textheight}{1.3in}
 
 \urlstyle{same}
 
@@ -41,33 +41,34 @@
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+  \scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{4pt}]
+\titlespacing*{\section}{0pt}{4pt}{3pt}
 
 %-------------------------
 % Custom commands
-\newcommand{\resumeItem}[2]{
-  \item\small{
-    \textbf{#1}{: #2 \vspace{-2pt}}
-  }
+\newcommand{\resumeItem}[2]{%
+  \item\small{%
+    \textbf{#1}{: #2}%
+  }%
 }
 
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-1pt}\item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-5pt}
+\newcommand{\resumeSubheading}[4]{%
+  \vspace{1pt}\item%
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}%
+      \textbf{#1} & #2 \\%
+      \textit{\small#3} & \textit{\small #4} \\%
+    \end{tabular*}%
 }
 
-\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}}
 
 \renewcommand{\labelitemii}{$\circ$}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,noitemsep,topsep=1pt]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=12pt,noitemsep,topsep=1pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
 
 %-------------------------------------------
 %%%%%%%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%
@@ -77,40 +78,45 @@
 \setlength{\footskip}{5pt}
 %----------HEADING-----------------
 \centering\textbf{\Large Alessandro Monticelli} \\
-\vspace{0.25in}
+\vspace{0.08in}
 \centering{\small{\faPhone} +39-340-053-1380 \quad
   \href{mailto:alessandro.monticelli@live.it}{\faEnvelope\ \underline{alessandro.monticelli@live.it}} \quad
   \href{https://www.linkedin.com/in/ale-mont}{{\faLinkedin} \underline{Alessandro Monticelli}} \quad
   \href{https://github.com/aleemont1}{{\faGithub} \underline{aleemont1}}}
 
 %-----------EXPERIENCE-----------------
-\section{\textbf{Experience}}
+\section{Experience}
 \resumeSubHeadingListStart
+\resumeSubheading
+{Software Developer}{Faenza, Italy}
+{S.EL.E.D. Soc. Coop.}{September 2026 -- Current}
+\resumeItemListStart
+  \resumeItem{Technologies used}{Python, FastAPI, PostgreSQL (pgvector, tsvector), Claude API (Prompt Caching), scikit-learn, Power Automate, Power Apps, SharePoint}
+  \item\small{Architected a two-stage hybrid RAG platform (FastAPI, PostgreSQL \texttt{pgvector} \& \texttt{tsvector}, RRF, Cross-Encoder) and a logit intent router, enforcing an air-gapped security model with zero direct LLM database access.}
+  \item\small{Implemented cross-contract analytical queries and automated termination notice tracking, eliminating renewal deadline oversights that previously caused five-figure penalties for Caviro, and decoupled the core engine to support laboratory test reports.}
+  \item\small{Reduced document ingestion API costs by 15x in Power Automate ETL pipelines by migrating to Claude Haiku 5.5, implementing prompt caching, and replacing massive JSON schema prompts with strict tool-calling structured outputs.}
+  \item\small{Refactored a PowerApp for Italian Revenue Agency (SdI) foreign invoice XML generation (Agrintesa), implementing batch updates for VAT rates and exemption codes (\textit{Natura IVA}), with optimized field validation and UX performance.}
+\resumeItemListEnd
 \resumeSubheading
 {Freelance Software Engineer}{Remote}
 {Self-employed}{June 2026 -- Current}
 \resumeItemListStart
-\resumeItem{Technologies used} {Python, SQLite, Docker, Multiprocessing, REST APIs}
-\resumeItem{Description}
-{
-  \begin{itemize}
-    \item Engineered GDOScraper, a modular ETL pipeline to extract, normalize, and persist promotional data from Italian supermarket chains for the italian startup Foodify.
-    \item Implemented dynamic REST API scraping and advanced visual parsing of geometric PDF flyers, featuring spatial segmentation and bounding-box image cropping.
-    \item Designed a scalable architecture utilizing the Strategy Pattern and multiprocessing, accompanied by a web dashboard and a TUI for visual data verification.
-  \end{itemize}
-}
+  \resumeItem{Technologies used}{Python, SQLite, Docker, Multiprocessing, REST APIs}
+  \item\small{Engineered \href{https://github.com/aleemont1/supermarket-scraper}{GDOScraper}, a modular ETL pipeline to extract, normalize, and persist promotional data from Italian supermarket chains for the Italian startup Foodify.}
+  \item\small{Implemented dynamic REST API scraping and advanced visual parsing of geometric PDF flyers, featuring spatial segmentation and bounding-box image cropping.}
+  \item\small{Designed a scalable architecture utilizing the Strategy Pattern and multiprocessing, accompanied by a web dashboard and a TUI for visual data verification.}
 \resumeItemListEnd
 \resumeSubheading
 {Undergraduate Researcher}{Cesena, Italy}
-{Supervised by professor Andrea Piroddi from the University of Bologna}{July 2025 - Current}
+{Supervised by professor Andrea Piroddi from the University of Bologna}{July 2025 -- Current}
 \resumeItemListStart
-\resumeItem{Technologies used} {C++, LoRa\textsuperscript{\textcopyright}}
+\resumeItem{Technologies used} {C++17, LoRa\textsuperscript{\textcopyright}, ns-3, Unity (TDD), Semtech SX1262}
 \resumeItem{Description}
 {
   \begin{itemize}
-    \item Designed a segmented-packet protocol over LoRa\textsuperscript{\textcopyright} for reliable point-to-point telemetry, enhancing payload capacity and transmission integrity for aerospace applications.
-    \item Conducted experimental field tests, achieving 95\% packet reconstruction success at 500m with a throughput of 540 Byte/s.
-    \item Authoring a research paper under the supervision of prof. Andrea Piroddi, for submission to IEEE, extending LoRa\textsuperscript{\textcopyright} to support segmented payloads with applications in multi-agent systems and point-to-point communication.
+    \item Architected \href{https://github.com/aleemont1/lora-paper}{LAMP (LoRaMultiPacket)}, a C++17 hardware-agnostic transport protocol featuring a 9-byte logical header and a cumulative binary bitmap SACK-ARQ mechanism supporting payloads up to 62.2~KB.
+    \item Conducted a stochastic simulation campaign in ns-3 across 117,050 runs (LoS, Urban, Rural fading channels), proving 100\% payload delivery up to 19.1~km in LoS (SF10).
+    \item Authoring a research paper under the supervision of prof. Andrea Piroddi (currently under IEEE peer review) evaluating protocol performance against SCHC and MPLR standards.
   \end{itemize}
 }
 \resumeItemListEnd
@@ -119,31 +125,26 @@
 \resumeItem{Technologies used} {C++, LoRa\textsuperscript{\textcopyright}, Python}
 \resumeItem{Description}
 {\begin{itemize}
-    \item Leading the development of an ESP32-based flight computer for a student sounding rocket, managing a team of 7 developers.
+    \item Leading the development of an ESP32-based flight computer for \href{https://github.com/aurorarocketryteam/nemesis}{Nemesis} (sounding rocket), managing a team of 7 developers.
     \item Oversaw telemetry system integration with a custom LoRa\textsuperscript{\textcopyright} protocol, ground station interface, and flight algorithms.
     \item System became the basis of my bachelor thesis, culminating in successful field validation during static tests and simulations.
   \end{itemize}}
 \resumeItemListEnd
 \resumeSubheading{Embedded Software Engineer Intern}{Cesena, Italy}{SPOT. Digital Made Simple}{February 2024 -- May 2024}
 \resumeItemListStart
-\resumeItem{Technologies used} {Python, .NET 8.0, NuGet}
-\resumeItem{Description}
-{\begin{itemize}
-    \item Reverse-engineered RF module drivers for smart cinema seats, extracting low-level control commands.
-    \item Designed and developed a simulator replicating the IoT system behavior, reducing integration testing time by 60\%.
-    \item Contributed to the refactoring of the IoT platform backend (Python, .NET 8.0).
-  \end{itemize}
-}
+  \resumeItem{Technologies used}{Python, .NET 8.0, NuGet}
+  \item\small{Reverse-engineered RF module drivers for smart cinema seats, extracting low-level control commands.}
+  \item\small{Designed and developed \href{https://github.com/aleemont1/OKINsimulator}{OKIN Simulator}, replicating the IoT system behavior and reducing integration testing time by 60\%.}
+  \item\small{Contributed to the refactoring of the IoT platform backend (Python, .NET 8.0).}
 \resumeItemListEnd
+
+
+\newpage
 \resumeSubheading{Software developer}{Bologna, Italy}{UBM - Unibo Motorsport Team}{October 2023 -- April 2024}
 \resumeItemListStart
-\resumeItem{Technologies used} {Python, Vue.js, MySQL}
-\resumeItem{Description}
-{\begin{itemize}
-    \item Enhanced database connection pooling, improving connection stability and query performance.
-    \item Optimized QR code scanning algorithms for product placement in warehouses, increasing detection reliability.
-  \end{itemize}
-}
+  \resumeItem{Technologies used}{Python, Vue.js, MySQL}
+  \item\small{Enhanced database connection pooling, improving connection stability and query performance.}
+  \item\small{Optimized QR code scanning algorithms for product placement in warehouses, increasing detection reliability.}
 \resumeItemListEnd
 \resumeSubHeadingListEnd
 
@@ -173,29 +174,22 @@
 \section{Education}
 \resumeSubHeadingListStart
 \resumeSubheading
-{"Alma Mater Studiorum" - University of Bologna}{Cesena (FC), Italy}
+{``Alma Mater Studiorum'' - University of Bologna}{Cesena (FC), Italy}
 {Master of Science in Computer Science and Engineering}{September 2025 -- Current}
-%\resumeItemListStart
-%\resumeItem{Relevant Coursework}{}
-%\resumeItemListEnd
 \resumeSubheading
-{"Haskolinn i Reykjavk" - University of Reykjavik}{Reykjavik, Iceland}
-{Erasmus+ Exchange for the Master of Science in Computer Science}{January 2026 -- June 2026}
+{Reykjavik University (H\'ask\'olinn \'i Reykjav\'ik)}{Reykjavik, Iceland}
+{Erasmus+ Exchange for the Master of Science in Computer Science}{January 2026 -- May 2026}
 \resumeItemListStart
-%\resumeItem{Thesis}{"Development and Optimization of a Telemetry System for Rockets - Architecture and Data Transmission using LoRa\textsuperscript{\textcopyright}"}
 \resumeItem{Relevant Coursework}{Distributed and Concurrent Programming (Go), Cybersecurity Management and Compliance in Practice (ISO27001, ISO42001), Deep Learning, Big Data Management}
 \resumeItemListEnd
 \resumeSubheading
-{"Alma Mater Studiorum" - University of Bologna}{Cesena (FC), Italy}
+{``Alma Mater Studiorum'' - University of Bologna}{Cesena (FC), Italy}
 {Bachelor of Science in Computer Science and Engineering}{September 2021 -- July 2025}
 \resumeItemListStart
-\resumeItem{Thesis}{"Development and Optimization of a Telemetry System for Rockets - Architecture and Data Transmission using LoRa\textsuperscript{\textcopyright}"}
+\resumeItem{Thesis}{``Development and Optimization of a Telemetry System for Rockets - Architecture and Data Transmission using LoRa\textsuperscript{\textcopyright}''}
 \resumeItem{Relevant Coursework}{Object-Oriented Programming (Java, C\#), High Performance Computing (OpenMP, Open MPI, CUDA, SIMD),
   Embedded Systems and Internet of Things (Arduino, ESP32 (rtOS), Raspberry Pi), Systems Integration and Virtualization (Docker, Vagrant, Kubernetes, Active Directory), Telecommunication Networks}
 \resumeItemListEnd
-\resumeSubheading
-{I.T.T. "G. Giorgi"}{Brindisi (BR), Italy}
-{High School Diploma in ICT and Telecommunications}{September 2016 -- June 2021}
 \resumeSubHeadingListEnd
 
 %-----------LANGUAGES-----------------
@@ -213,24 +207,23 @@
 \section{Skills}
 \resumeSubHeadingListStart
 \item{
-            \textbf{Programming}{: C++, C, Python, Java, C\# (.NET 8.0). }
+            \textbf{Programming}{: C++, C, Python, Java, C\# (.NET 8.0), Go (basic), SQL.}
             \hfill
       }
 \item{
-            \textbf{Embedded Systems \& IoT}{: ESP32 (FreeRTOS), Arduino, Raspberry Pi, sensor fusion, RTOS task scheduling.}
+            \textbf{AI \& Data Engineering}{: RAG Architectures, PostgreSQL (pgvector, tsvector), FastEmbed, scikit-learn, LLM APIs (Prompt Caching), REST APIs (FastAPI).}
             \hfill
       }
 \item{
-            \textbf{Networking \& Protocols}{: LoRa\textsuperscript{\textcopyright} custom protocols, MQTT, HTTP, Active Directory, DNS/DHCP configuration}
+            \textbf{Embedded Systems \& IoT}{: ESP32 (FreeRTOS), Arduino, Raspberry Pi, LoRa\textsuperscript{\textcopyright}, MQTT, Sensor Fusion, RTOS scheduling.}
+            \hfill
       }
 \item{
-            \textbf{High Performance Computing}{: OpenMP, OpenMPI, CUDA, SIMD}
+            \textbf{HPC \& Simulation}{: OpenMP, OpenMPI, CUDA, SIMD, ns-3.}
+            \hfill
       }
 \item{
-            \textbf{Systems Integration}{: Docker, Kubernetes (basic), CI/CD pipelines with GitHub Actions}
-      }
-\item{
-            \textbf{Operating Systems}{: Linux (desktop \& server), Windows Server (AD, GPOs).}
+            \textbf{Cloud \& Systems Integration}{: Docker, Kubernetes (basic), CI/CD (GitHub Actions), Power Platform, Linux (Desktop \& Server), Windows Server.}
             \hfill
       }
 \resumeSubHeadingListEnd
@@ -238,25 +231,21 @@
 %-----------PROJECTS-----------------
 \section{Projects}
 \resumeSubHeadingListStart
-\resumeSubItem{\href{https://github.com/aleemont1/supermarket-scraper}{GDOScraper}}
-{Modular ETL pipeline in Python for extracting promotional data from supermarkets, utilizing REST APIs and advanced visual parsing of PDF flyers.}
-\resumeSubItem{\href{https://github.com/aurorarocketryteam/nemesis}{Nemesis}}
-{Advanced flight computer software for high-power rocketry, featuring real-time telemetry, sensor fusion, and autonomous flight state management.}
-\resumeSubItem{\href{https://github.com/aleemont1/OKINsimulator}{OKIN Simulator}}
-{Simulator of smart cinema seat control systems, replicating real-world device interactions with a modular architecture in Python.}
 \resumeSubItem{\href{https://github.com/aleemont1/esiot-23-24-assignment3/}{River Monitoring System}}
-{Developed a river monitoring subsystem for data acquisition and MQTT transmission, implementing task scheduling and robust error handling.}
+{Subsystem for IoT environmental data acquisition and MQTT transmission, implementing FreeRTOS task scheduling and fault handling.}
 \resumeSubItem{\href{https://github.com/aleemont1/esiot-23-24-assignment2/}{Smart Car Washing}}
-{Led backend development for a smart car washing prototype, engineering task APIs, schedulers, and dependency systems.}
+{Led backend service development for an automated car washing prototype, engineering RESTful task APIs, schedulers, and dependency graphs.}
 \resumeSubItem{\href{https://github.com/progetto-oop-22-23/OOP22-HOMER}{HOMER}}
-{Designed system architecture and developed energy monitoring features and smart automation for a Java-based smart home simulator.}
+{Designed modular OOP system architecture and developed real-time energy monitoring and automation algorithms for a Java smart-home platform.}
 \resumeSubHeadingListEnd
 
 %--------PUBLICATIONS--------
 \section{Publications}
 \resumeSubHeadingListStart
-\item \textbf{Bachelor Thesis} {\href{https://aleemont1.github.io/bachelor-thesis/pdf/tesi.pdf}{"Development and Optimization of a Telemetry System for Rockets – Architecture and Data Transmission using LoRa\textsuperscript{\textcopyright}"}}
-\item \textbf{Research Paper (manuscript in preparation)} {Monticelli A., “A Data Segmentation Protocol for LoRa\textsuperscript{\textcopyright} Transmission” expected submission to IEEE, 2026.}
+\resumeSubItem{\href{https://github.com/aleemont1/lora-paper}{Journal Paper (IEEE Peer Review)}}
+{Monticelli A., Piroddi A., \textit{“Development of a Segmented, Reliable Communication Protocol for Data Transmission over Long-Range (LoRa) Links”}, target: IEEE Journal of Telecommunications, 2026.}
+\resumeSubItem{\href{https://aleemont1.github.io/bachelor-thesis/pdf/tesi.pdf}{Bachelor Thesis}}
+{\textit{“Development and Optimization of a Telemetry System for Rockets – Architecture and Data Transmission using LoRa\textsuperscript{\textcopyright}”}, University of Bologna, 2025.}
 \resumeSubHeadingListEnd
 
 %--------CERTIFICATES--------
