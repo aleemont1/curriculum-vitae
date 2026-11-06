@@ -17,8 +17,10 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # Every variant of this CV must fit on exactly this many pages (empty = no check).
+  # Plain variants must fit on this many pages (empty = no check).
   MAX_PAGES: "2"
+  # Signed variants also carry the consent clause and signature block.
+  MAX_PAGES_SIGNED: "3"
 
 jobs:
   build:
@@ -45,10 +47,12 @@ jobs:
         if: env.MAX_PAGES != ''
         run: |
           command -v pdfinfo >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils) >/dev/null
+          limit="$MAX_PAGES"
+          if [[ "${{ matrix.variant }}" == *signed* ]]; then limit="$MAX_PAGES_SIGNED"; fi
           pages=$(pdfinfo "${{ matrix.variant }}.pdf" | awk '/^Pages:/ {print $2}')
-          echo "${{ matrix.variant }}.pdf has $pages page(s)"
-          if [ "$pages" -gt "$MAX_PAGES" ]; then
-            echo "::error file=${{ matrix.variant }}.tex::${{ matrix.variant }}.pdf has $pages pages, the limit is $MAX_PAGES"
+          echo "${{ matrix.variant }}.pdf has $pages page(s), limit $limit"
+          if [ "$pages" -gt "$limit" ]; then
+            echo "::error file=${{ matrix.variant }}.tex::${{ matrix.variant }}.pdf has $pages pages, the limit is $limit"
             exit 1
           fi
 
