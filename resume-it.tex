@@ -27,7 +27,7 @@
   \item\small{Progettato e realizzato in SELED \textbf{RagCore}, un motore RAG generico che risponde a domande su dati e documenti aziendali, partito dai contratti Caviro ed esteso alle analisi di laboratorio Agrintesa: retrieval ibrido a due stadi (PostgreSQL \texttt{pgvector} \& full-text \texttt{tsvector}, RRF, Cross-Encoder), intent router basato su logit, front end Angular con Microsoft Entra ID e acquisizione da SharePoint via Power Automate, con un modello di sicurezza air-gapped senza accesso diretto dell'LLM al database.}
   \item\small{Mantenuto il core agnostico rispetto alla Knowledge Base scelta tramite Knowledge Base dichiarative, in cui ogni caso d'uso si configura invece di richiedere nuovo codice: contratti per Caviro (ricerca sulle clausole con recupero hit@1 di 0,948 e query trasversali) e referti di laboratorio per Agrintesa (esiti per catena, residui).}
   \item\small{Ridotto di 15 volte i costi API di acquisizione documenti nelle pipeline ETL di Power Automate migrando a Claude Haiku 5.5, con prompt caching e output strutturati via tool calling al posto di lunghi prompt con schemi JSON.}
-  \item\small{Rifattorizzato una PowerApp per la generazione degli XML delle fatture estere verso lo SdI (Agrintesa), con aggiornamenti massivi di aliquote IVA e codici \textit{Natura IVA}, validazione dei campi e UX ottimizzate.}
+  \item\small{Rifattorizzato una PowerApp per la generazione degli XML delle fatture estere verso lo SdI (LINKER), con aggiornamenti massivi di aliquote IVA e codici \textit{Natura IVA}, validazione dei campi e UX ottimizzate.}
 \resumeItemListEnd
 \resumeSubheading
 {Software Engineer freelance}{Da remoto}
