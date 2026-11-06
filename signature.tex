@@ -1,0 +1,48 @@
+%-------------------------
+% Signed variants: GDPR consent clause, place/date and signature.
+%
+% \cvsignatureblock prints nothing unless \cvsigned is defined
+% (see resume-signed.tex / resume-it-signed.tex).
+%
+% The signature image is read from signature.png when it exists.
+% In CI (.github/workflows/signed.yml) it is decrypted from the committed
+% signature.png.gpg with the SIGNATURE_PASSPHRASE secret, so the plain
+% scan is never committed. Without it a blank signature line is printed.
+%
+% Set the place shown before the date with \def\cvplace{City}
+% (left empty, only the date is printed).
+%-------------------------
+
+\ifdefined\cvplace\else\def\cvplace{}\fi
+% Vertical space before the block and height of the signature image;
+% a preamble can \def these before \input{signature} to save space.
+\ifdefined\cvsignatureskip\else\def\cvsignatureskip{8pt}\fi
+\ifdefined\cvsignatureheight\else\def\cvsignatureheight{1cm}\fi
+
+\newcommand{\cvconsenttext}{%
+  \iflanguage{italian}{%
+    Autorizzo il trattamento dei dati personali contenuti nel presente CV
+    ai sensi del D.Lgs.~196/2003 e del Regolamento (UE) 2016/679 (GDPR).%
+  }{%
+    I authorize the processing of the personal data contained in this CV
+    pursuant to Legislative Decree 196/2003 and EU Regulation 2016/679 (GDPR).%
+  }%
+}
+
+\newcommand{\cvsignatureblock}{%
+  \ifdefined\cvsigned
+    \par\vspace{\cvsignatureskip}%
+    \noindent\begin{minipage}[b]{0.66\linewidth}%
+      \footnotesize\raggedright\cvconsenttext\par\vspace{2pt}%
+      \ifx\cvplace\empty\else\cvplace, \fi\today
+    \end{minipage}\hfill
+    \begin{minipage}[b]{0.3\linewidth}%
+      \centering
+      \IfFileExists{signature.png}%
+        {\includegraphics[height=\cvsignatureheight,width=\linewidth,keepaspectratio]{signature.png}}%
+        {\rule{0pt}{\cvsignatureheight}}\\[-2pt]
+      \rule{\linewidth}{0.4pt}\\
+      \footnotesize Alessandro Monticelli
+    \end{minipage}%
+  \fi
+}
