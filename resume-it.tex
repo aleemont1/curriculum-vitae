@@ -1,0 +1,159 @@
+%-------------------------
+% Long CV -- Italian. Layout and shared macros live in preamble.tex.
+% Keep resume.tex in sync with every content change made here.
+%-------------------------
+\documentclass[letterpaper,11pt,italian]{article}
+\input{preamble}
+\hypersetup{pdftitle={Alessandro Monticelli -- Curriculum Vitae (IT)}, pdflang={it-IT}}
+
+\begin{document}
+\setlength{\footskip}{5pt}
+%----------HEADING-----------------
+\centering\textbf{\Large Alessandro Monticelli} \\
+\vspace{0.08in}
+\centering{\small{\faPhone} +39-340-053-1380 \quad
+  \href{mailto:alessandro.monticelli@live.it}{\faEnvelope\ \underline{alessandro.monticelli@live.it}} \quad
+  \href{https://www.linkedin.com/in/ale-mont}{{\faLinkedin} \underline{Alessandro Monticelli}} \quad
+  \href{https://github.com/aleemont1}{{\faGithub} \underline{aleemont1}}}
+
+%-----------EXPERIENCE-----------------
+\section{Esperienze professionali}
+\resumeSubHeadingListStart
+\resumeSubheading
+{Sviluppatore Software}{Faenza, Italia}
+{S.EL.E.D. Soc. Coop.}{Settembre 2026 -- In corso}
+\resumeItemListStart
+  \resumeItem{Tecnologie utilizzate}{Python, FastAPI, PostgreSQL (pgvector, tsvector), Claude API (Prompt Caching), scikit-learn, Power Automate, Power Apps, SharePoint}
+  \item\small{Progettato una piattaforma RAG ibrida a due stadi (FastAPI, PostgreSQL \texttt{pgvector} \& \texttt{tsvector}, RRF, Cross-Encoder) e un intent router basato su logit, con un modello di sicurezza air-gapped senza accesso diretto dell'LLM al database.}
+  \item\small{Implementato query analitiche trasversali sui contratti e il monitoraggio automatico delle disdette, eliminando le scadenze di rinnovo mancate che causavano penali a cinque cifre per Caviro; disaccoppiato il motore principale per gestire anche i rapporti di prova di laboratorio.}
+  \item\small{Ridotto di 15 volte i costi API di acquisizione documenti nelle pipeline ETL di Power Automate migrando a Claude Haiku 5.5, con prompt caching e output strutturati via tool calling al posto di lunghi prompt con schemi JSON.}
+  \item\small{Rifattorizzato una PowerApp per la generazione degli XML delle fatture estere verso lo SdI (Agrintesa), con aggiornamenti massivi di aliquote IVA e codici \textit{Natura IVA}, validazione dei campi e UX ottimizzate.}
+\resumeItemListEnd
+\resumeSubheading
+{Software Engineer freelance}{Da remoto}
+{Libero professionista}{Giugno 2026 -- In corso}
+\resumeItemListStart
+  \resumeItem{Tecnologie utilizzate}{Python, SQLite, Docker, Multiprocessing, REST API}
+  \item\small{Sviluppato \href{https://github.com/aleemont1/supermarket-scraper}{GDOScraper}, una pipeline ETL modulare che estrae, normalizza e salva i dati promozionali delle catene GDO italiane per la startup Foodify.}
+  \item\small{Implementato lo scraping dinamico di REST API e il parsing visuale di volantini PDF, con segmentazione spaziale e ritaglio delle immagini tramite bounding box.}
+  \item\small{Progettato un'architettura scalabile (Strategy Pattern, multiprocessing) con dashboard web e TUI per la verifica visuale dei dati.}
+\resumeItemListEnd
+\resumeSubheading
+{Studente ricercatore}{Cesena, Italia}
+{Sotto la supervisione del prof. Andrea Piroddi, Università di Bologna}{Luglio 2025 -- In corso}
+\resumeItemListStart
+\resumeItem{Tecnologie utilizzate} {C++17, LoRa\textsuperscript{\textcopyright}, ns-3, Unity (TDD), Semtech SX1262}
+\resumeItem{Descrizione}
+{
+  \begin{itemize}
+    \item Progettato \href{https://github.com/aleemont1/LAMP}{LAMP (LoRaMultiPacket)}, protocollo di trasporto C++17 indipendente dall'hardware, con header logico di 9 byte e SACK-ARQ a singola bitmap cumulativa, per payload fino a 62,2~KB.
+    \item Condotto una campagna di simulazione stocastica in ns-3 (295.800 esecuzioni su canali statici, urbani e rurali), estendendo del 22--35\% la portata al 90\% di PDR in ambito urbano e aumentando il goodput del 14--16\% a SF7.
+    \item Validato su banco hardware ESP32-S3 / SX1262 a doppia scheda con scostamenti entro il 7\%; articolo IEEE in stesura con il prof. Andrea Piroddi.
+  \end{itemize}
+}
+\resumeItemListEnd
+\resumeSubheading{Project Manager}{Forlì, Italia}{Aurora Rocketry Team - Unibo}{Aprile 2024 -- In corso}
+\resumeItemListStart
+\resumeItem{Tecnologie utilizzate} {C++, LoRa\textsuperscript{\textcopyright}, Python}
+\resumeItem{Descrizione}
+{\begin{itemize}
+    \item Guido lo sviluppo del flight computer ESP32 per \href{https://github.com/AuroraRocketryTeam/atlas}{Atlas / Nemesis} (razzo sonda), coordinando un team di 7 sviluppatori.
+    \item Supervisionato l'integrazione della telemetria con un protocollo LoRa\textsuperscript{\textcopyright} personalizzato, la stazione di terra e gli algoritmi di volo.
+    \item Il sistema è alla base della mia tesi triennale ed è stato validato con successo in test statici e simulazioni.
+  \end{itemize}}
+\resumeItemListEnd
+\resumeSubheading{Tirocinante -- Embedded Software Engineer}{Cesena, Italia}{SPOT. Digital Made Simple}{Febbraio 2024 -- Maggio 2024}
+\resumeItemListStart
+  \resumeItem{Tecnologie utilizzate}{Python, .NET 8.0, NuGet}
+  \item\small{Reverse engineering dei driver dei moduli RF di poltrone smart per cinema, con estrazione dei comandi di controllo a basso livello.}
+  \item\small{Progettato e sviluppato \href{https://github.com/aleemont1/OKINsimulator}{OKIN Simulator}, che replica il sistema IoT e ha ridotto del 60\% i tempi dei test di integrazione.}
+  \item\small{Contribuito al refactoring del backend della piattaforma IoT (Python, .NET 8.0).}
+\resumeItemListEnd
+
+
+\newpage
+\resumeSubheading{Sviluppatore Software}{Bologna, Italia}{UBM - Unibo Motorsport Team}{Ottobre 2023 -- Aprile 2024}
+\resumeItemListStart
+  \resumeItem{Tecnologie utilizzate}{Python, Vue.js, MySQL}
+  \item\small{Migliorato il connection pooling del database, aumentando la stabilità delle connessioni e le prestazioni delle query.}
+  \item\small{Ottimizzato gli algoritmi di scansione QR per la collocazione dei prodotti in magazzino, migliorandone l'affidabilità.}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------------
+\section{Istruzione}
+\resumeSubHeadingListStart
+\resumeSubheading
+{``Alma Mater Studiorum'' - Università di Bologna}{Cesena (FC), Italia}
+{Laurea Magistrale in Ingegneria e Scienze Informatiche}{Settembre 2025 -- In corso}
+\resumeSubheading
+{Reykjavik University (H\'ask\'olinn \'i Reykjav\'ik)}{Reykjavík, Islanda}
+{Scambio Erasmus+ nell'ambito della Laurea Magistrale in Computer Science}{Gennaio 2026 -- Maggio 2026}
+\resumeItemListStart
+\resumeItem{Insegnamenti rilevanti}{Distributed and Concurrent Programming (Go), Cybersecurity Management and Compliance in Practice (ISO27001, ISO42001), Deep Learning, Big Data Management}
+\resumeItemListEnd
+\resumeSubheading
+{``Alma Mater Studiorum'' - Università di Bologna}{Cesena (FC), Italia}
+{Laurea Triennale in Ingegneria e Scienze Informatiche}{Settembre 2021 -- Luglio 2025}
+\resumeItemListStart
+\resumeItem{Tesi}{``Sviluppo e ottimizzazione di un sistema di telemetria per razzi - Architettura e trasmissione dati tramite LoRa\textsuperscript{\textcopyright}''}
+\resumeItem{Insegnamenti rilevanti}{Sistemi Embedded e Internet of Things, Programmazione di Reti, Reti di Telecomunicazione, High Performance Computing (CUDA, OpenMP, MPI), Integrazione e Virtualizzazione dei Sistemi, Programmazione ad Oggetti (Java, C\#)}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+%--------PROGRAMMING SKILLS------------
+\section{Competenze}
+\resumeSubHeadingListStart
+\item{
+            \textbf{Programmazione}{: C++, C, Python, Java, C\# (.NET 8.0), Go (base), SQL.}
+            \hfill
+      }
+\item{
+            \textbf{AI \& Data Engineering}{: Architetture RAG, PostgreSQL (pgvector, tsvector), FastEmbed, scikit-learn, API di LLM (Prompt Caching), REST API (FastAPI).}
+            \hfill
+      }
+\item{
+            \textbf{Sistemi Embedded \& IoT}{: ESP32 (FreeRTOS), Arduino, Raspberry Pi, LoRa\textsuperscript{\textcopyright}, MQTT, Sensor Fusion, scheduling RTOS.}
+            \hfill
+      }
+\item{
+            \textbf{HPC \& Simulazione}{: OpenMP, OpenMPI, CUDA, SIMD, ns-3.}
+            \hfill
+      }
+\item{
+            \textbf{Cloud \& Integrazione di Sistemi}{: Docker, Kubernetes (base), CI/CD (GitHub Actions), Power Platform, Linux (Desktop \& Server), Windows Server.}
+            \hfill
+      }
+\resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------------
+\section{Progetti}
+\resumeSubHeadingListStart
+\resumeSubItem{\href{https://github.com/AuroraRocketryTeam/atlas}{Atlas / Nemesis (Flight Computer)}}
+{Software di volo ESP32 per i razzi sonda di Aurora Rocketry: telemetria LoRa\textsuperscript{\textcopyright} in tempo reale, sensor fusion (IMU, barometro, GPS), concorrenza FreeRTOS e rilevamento dell'apogeo con EKF.}
+\resumeSubItem{\href{https://github.com/aleemont1/federated-lightweight-chat}{Federated Lightweight Chat (FLC)}}
+{Messaggistica distribuita peer-to-peer con vector clock, ordinamento causale, anti-entropia gossip, repliche SQLite e orchestrazione Docker con Traefik e Let's Encrypt.}
+\resumeSubItem{\href{https://github.com/aleemont1/TheCouncil}{TheCouncil}}
+{Framework open source di agentic engineering che offre code review in forma di tribunale dialettico e ``lenti'' di vincoli architetturali (Carmack, Lamport, Muratori, Ousterhout) per gli assistenti di programmazione AI.}
+\resumeSubItem{\href{https://github.com/progetto-oop-22-23/OOP22-HOMER}{HOMER}}
+{Progettato l'architettura OOP modulare e sviluppato gli algoritmi di monitoraggio energetico e automazione in tempo reale di una piattaforma smart home in Java.}
+\resumeSubHeadingListEnd
+
+%--------PUBLICATIONS--------
+\section{Pubblicazioni}
+\resumeSubHeadingListStart
+\resumeSubItem{\href{https://github.com/aleemont1/lora-paper}{Articolo su rivista (in preparazione)}}
+{Monticelli A., Piroddi A., \textit{“LAMP: A Selective-ACK Transport Protocol for Reliable Bulk Data Transmission over LoRa Networks”}, in preparazione per la sottomissione a IEEE, 2026.}
+\resumeSubItem{\href{https://aleemont1.github.io/bachelor-thesis/pdf/tesi.pdf}{Tesi di Laurea Triennale}}
+{\textit{“Sviluppo e ottimizzazione di un sistema di telemetria per razzi – Architettura e trasmissione dati tramite LoRa\textsuperscript{\textcopyright}”}, Università di Bologna, 2025.}
+\resumeSubHeadingListEnd
+
+%--------CERTIFICATES--------
+\section{Certificazioni}
+\resumeSubHeadingListStart
+\item \textbf{Cisco Networking Academy}{: \href{https://github.com/aleemont1/curriculum-vitae/blob/main/certificates/PYTHON-2020_certificate.pdf}{PCAP -- Programming Essentials in Python}, \href{https://github.com/aleemont1/curriculum-vitae/blob/main/certificates/IOT-2018_certificate.pdf}{Introduction to the Internet of Things}, \href{https://github.com/aleemont1/curriculum-vitae/blob/main/certificates/GetConnected-2017_certificate.pdf}{Get Connected}.}
+\item \textbf{Inglese}{: \href{https://github.com/aleemont1/curriculum-vitae/blob/main/certificates/English_C1.pdf}{Certificato di livello C1}.}
+\resumeSubHeadingListEnd
+\cvsignatureblock
+%-------------------------------------------
+\end{document}

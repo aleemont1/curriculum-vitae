@@ -1,4 +1,4 @@
-name: Build and publish Latex
+name: Build and publish CV
 
 on:
   push:
@@ -7,83 +7,98 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+
+concurrency:
+  group: cv-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Every variant of this CV must fit on exactly this many pages (empty = no check).
+  MAX_PAGES: "2"
 
 jobs:
-  build-pdf:
+  build:
+    name: Build ${{ matrix.variant }}
     runs-on: ubuntu-latest
-    name: Build PDF
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Compile resume
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: resume.tex
-          work_in_root_file_dir: true
-          args: -xelatex -file-line-error -halt-on-error -interaction=nonstopmode
-
-      - name: Generate build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-pdf
-          path: resume.pdf
-
-  deploy:
-    name: Deploy PDF to GitHub Pages
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build-pdf
-    if: github.ref == 'refs/heads/main'
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: [resume, resume-it, resume-signed, resume-it-signed]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download PDF artifact
+      # Signed variants are compiled here only to check the layout: no signature
+      # image is used and the PDFs are not published.
+      - name: Compile ${{ matrix.variant }}.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: ${{ matrix.variant }}.tex
+          work_in_root_file_dir: true
+          args: -xelatex -file-line-error -halt-on-error -interaction=nonstopmode
+
+      - name: Check page count
+        if: env.MAX_PAGES != ''
+        run: |
+          command -v pdfinfo >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils) >/dev/null
+          pages=$(pdfinfo "${{ matrix.variant }}.pdf" | awk '/^Pages:/ {print $2}')
+          echo "${{ matrix.variant }}.pdf has $pages page(s)"
+          if [ "$pages" -gt "$MAX_PAGES" ]; then
+            echo "::error file=${{ matrix.variant }}.tex::${{ matrix.variant }}.pdf has $pages pages, the limit is $MAX_PAGES"
+            exit 1
+          fi
+
+      - name: Upload PDF
+        if: ${{ !contains(matrix.variant, 'signed') }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.variant }}
+          path: ${{ matrix.variant }}.pdf
+          retention-days: 30
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download PDFs
         uses: actions/download-artifact@v4
         with:
-          name: build-pdf
-          path: site/
+          path: _site/
+          merge-multiple: true
 
-      - name: Create Index Redirect
+      - name: Assemble site
         run: |
-          cat > site/index.html <<EOF
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-              <meta charset="UTF-8">
-              <meta http-equiv="refresh" content="0; url=resume.pdf">
-              <title>Redirecting to Resume...</title>
-              <style>
-                  body { font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f0f2f5; }
-                  .container { text-align: center; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-                  a { color: #0969da; text-decoration: none; font-weight: 600; }
-                  a:hover { text-decoration: underline; }
-              </style>
-          </head>
-          <body>
-              <div class="container">
-                  <p>Redirecting you to the PDF...</p>
-                  <p><a href="resume.pdf">Click here if you are not redirected automatically.</a></p>
-              </div>
-          </body>
-          </html>
-          EOF
+          cp -r site/. _site/
+          updated=$(git log -1 --format=%cs)
+          repo="${GITHUB_REPOSITORY#*/}"
+          sed -i "s/__UPDATED__/$updated/g; s/__REPO__/$repo/g" _site/index.html
+          (sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils) >/dev/null
+          pdftoppm -png -scale-to-x 660 -scale-to-y -1 -f 1 -l 1 -singlefile _site/resume.pdf _site/preview-en
+          pdftoppm -png -scale-to-x 660 -scale-to-y -1 -f 1 -l 1 -singlefile _site/resume-it.pdf _site/preview-it
+          ls -la _site
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifacts
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site/
+          path: _site/
 
       - name: Deploy to GitHub Pages
         id: deployment

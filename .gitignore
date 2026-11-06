@@ -1,0 +1,20 @@
+# LaTeX build output
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.xdv
+*.toc
+missfont.log
+
+# Built PDFs are published by CI, not committed (certificates/ stay tracked)
+/resume*.pdf
+
+# Never commit the signature scan: CI restores it from a secret
+signature.png
+signature.*.png
+
+# Local site build
+/_site/

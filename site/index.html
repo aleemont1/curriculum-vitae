@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alessandro Monticelli · CV</title>
+  <meta name="description" content="Curriculum vitae of Alessandro Monticelli, software engineer (embedded systems, IoT, AI). Available in English and Italian.">
+  <meta name="author" content="Alessandro Monticelli">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Alessandro Monticelli · CV">
+  <meta property="og:description" content="Software engineer: embedded systems, IoT and AI. CV in English and Italian.">
+  <meta property="og:url" content="https://aleemont1.github.io/__REPO__/">
+  <meta property="og:image" content="https://aleemont1.github.io/__REPO__/preview-en.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" hreflang="en" href="https://aleemont1.github.io/__REPO__/?lang=en">
+  <link rel="alternate" hreflang="it" href="https://aleemont1.github.io/__REPO__/?lang=it">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f4fd1'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' fill='white' text-anchor='middle'%3EAM%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #f6f7f9; --card: #ffffff; --text: #16181d; --muted: #5b6270;
+      --line: #e3e6eb; --accent: #1f4fd1; --accent-text: #ffffff; --shadow: 0 1px 2px rgba(0,0,0,.05), 0 8px 24px rgba(0,0,0,.06);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1115; --card: #171a21; --text: #e9ecf1; --muted: #9aa3b2;
+        --line: #272c36; --accent: #7aa2ff; --accent-text: #0f1115; --shadow: none;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    main { max-width: 860px; margin: 0 auto; padding: 32px 16px 48px; }
+    header { display: flex; gap: 16px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; }
+    h1 { margin: 0; font: 600 2rem/1.15 Georgia, "Times New Roman", serif; letter-spacing: -.01em; }
+    .tagline { margin: 6px 0 0; color: var(--muted); }
+    .lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--card); }
+    .lang button {
+      border: 0; background: none; color: var(--muted); font: inherit; font-weight: 600;
+      padding: 6px 14px; border-radius: 999px; cursor: pointer;
+    }
+    .lang button[aria-pressed="true"] { background: var(--accent); color: var(--accent-text); }
+    .card {
+      margin-top: 28px; background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+      box-shadow: var(--shadow); display: grid; grid-template-columns: 220px 1fr; overflow: hidden;
+    }
+    .preview { background: var(--line); display: block; }
+    .preview img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .body { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+    .body h2 { margin: 0; font-size: 1.25rem; }
+    .body p { margin: 0; color: var(--muted); }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 10px;
+      font-weight: 600; text-decoration: none; border: 1px solid var(--line); color: var(--text);
+    }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+    .btn:focus-visible, .lang button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .other { margin-top: 18px; color: var(--muted); }
+    .other a, footer a, .alt a { color: var(--accent); }
+    .alt { font-size: .9rem; }
+    .contacts { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .contacts a { color: var(--text); text-decoration: none; }
+    .contacts a:hover { text-decoration: underline; }
+    footer { margin-top: 20px; color: var(--muted); font-size: .875rem; }
+    @media (max-width: 640px) {
+      .card { grid-template-columns: 1fr; }
+      .preview { max-height: 220px; }
+      h1 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>Alessandro Monticelli</h1>
+      <p class="tagline" data-i18n="tagline">Software engineer · embedded systems, IoT and AI</p>
+    </div>
+    <div class="lang" role="group" aria-label="Language / Lingua">
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="it" aria-pressed="false">IT</button>
+    </div>
+  </header>
+
+  <section class="card" aria-labelledby="cv-title">
+    <a class="preview" id="preview-link" href="resume.pdf">
+      <img id="preview" src="preview-en.png" alt="" width="220" height="285">
+    </a>
+    <div class="body">
+      <h2 id="cv-title" data-i18n="title">Curriculum vitae</h2>
+      <p data-i18n="summary"></p>
+      <p class="alt"><a href="resume-it.pdf" hreflang="it" lang="it" id="alt-lang">Versione italiana (PDF)</a></p>
+      <div class="actions">
+        <a class="btn primary" id="view" href="resume.pdf" data-i18n="view">View PDF</a>
+        <a class="btn" id="download" href="resume.pdf" download data-i18n="download">Download</a>
+      </div>
+    </div>
+  </section>
+
+  <p class="other"><span data-i18n="otherLead"></span> <a id="other" href="#" data-i18n="otherLink"></a></p>
+
+  <nav class="contacts" aria-label="Contacts">
+    <a href="mailto:alessandro.monticelli@live.it">alessandro.monticelli@live.it</a>
+    <a href="https://www.linkedin.com/in/ale-mont">LinkedIn</a>
+    <a href="https://github.com/aleemont1">GitHub</a>
+  </nav>
+
+  <footer><span data-i18n="updated">Last updated:</span> <time datetime="__UPDATED__">__UPDATED__</time></footer>
+</main>
+
+<script>
+  // Per-repository settings. The workflow replaces __REPO__ and __UPDATED__.
+  const CONFIG = {
+    kind: "long",
+    otherUrl: "https://aleemont1.github.io/one-page-cv/",
+    pdf: { en: "resume.pdf", it: "resume-it.pdf" },
+    downloadName: { en: "Alessandro_Monticelli_CV_EN.pdf", it: "Alessandro_Monticelli_CV_IT.pdf" },
+  };
+
+  const STRINGS = {
+    en: {
+      tagline: "Software engineer · embedded systems, IoT and AI",
+      title: { short: "One-page CV", long: "Full CV" }[CONFIG.kind],
+      summary: {
+        short: "A one-page summary of my experience, education and skills.",
+        long: "The complete version, with every role, project, publication and certificate.",
+      }[CONFIG.kind],
+      view: "View PDF",
+      download: "Download",
+      otherLead: { short: "Need more detail?", long: "Short on time?" }[CONFIG.kind],
+      otherLink: { short: "See the full CV", long: "See the one-page CV" }[CONFIG.kind],
+      updated: "Last updated:",
+    },
+    it: {
+      tagline: "Software engineer · sistemi embedded, IoT e AI",
+      title: { short: "CV in una pagina", long: "CV completo" }[CONFIG.kind],
+      summary: {
+        short: "Una sintesi in una pagina di esperienze, formazione e competenze.",
+        long: "La versione completa, con tutti i ruoli, i progetti, le pubblicazioni e le certificazioni.",
+      }[CONFIG.kind],
+      view: "Apri il PDF",
+      download: "Scarica",
+      otherLead: { short: "Ti servono più dettagli?", long: "Hai poco tempo?" }[CONFIG.kind],
+      otherLink: { short: "Vedi il CV completo", long: "Vedi il CV in una pagina" }[CONFIG.kind],
+      updated: "Ultimo aggiornamento:",
+    },
+  };
+
+  function store(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) {}
+  }
+  function stored(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+
+  // Priority: ?lang= in the URL, then the visitor's last choice, then the browser language.
+  function initialLang() {
+    const fromUrl = new URLSearchParams(location.search).get("lang");
+    if (fromUrl === "en" || fromUrl === "it") return fromUrl;
+    const saved = stored("cv-lang");
+    if (saved === "en" || saved === "it") return saved;
+    const langs = navigator.languages || [navigator.language || "en"];
+    return langs.some(l => /^it\b/i.test(l)) ? "it" : "en";
+  }
+
+  function apply(lang) {
+    const s = STRINGS[lang];
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = s[el.dataset.i18n]; });
+    document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+    const pdf = CONFIG.pdf[lang];
+    document.getElementById("view").href = pdf;
+    document.getElementById("preview-link").href = pdf;
+    const dl = document.getElementById("download");
+    dl.href = pdf;
+    dl.setAttribute("download", CONFIG.downloadName[lang]);
+    const img = document.getElementById("preview");
+    img.src = "preview-" + lang + ".png";
+    img.alt = s.title;
+    const alt = lang === "en" ? "it" : "en";
+    const altLink = document.getElementById("alt-lang");
+    altLink.href = CONFIG.pdf[alt];
+    altLink.hreflang = altLink.lang = alt;
+    altLink.textContent = alt === "it" ? "Versione italiana (PDF)" : "English version (PDF)";
+    document.getElementById("other").href = CONFIG.otherUrl + "?lang=" + lang;
+    const date = document.querySelector("footer time");
+    const d = new Date(date.getAttribute("datetime"));
+    if (!isNaN(d)) date.textContent = d.toLocaleDateString(lang === "it" ? "it-IT" : "en-GB", { day: "numeric", month: "long", year: "numeric" });
+  }
+
+  document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => {
+    store("cv-lang", b.dataset.lang);
+    apply(b.dataset.lang);
+    const url = new URL(location.href);
+    url.searchParams.set("lang", b.dataset.lang);
+    history.replaceState(null, "", url);
+  }));
+
+  apply(initialLang());
+</script>
+</body>
+</html>

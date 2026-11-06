@@ -1,0 +1,88 @@
+name: Build signed CV
+
+# Builds the signed variants (GDPR clause + date + handwritten signature) on demand.
+# They are never published to GitHub Pages: the PDFs are packed in an AES-256
+# encrypted zip, kept as a workflow artifact for one day.
+#
+# Needs:
+#   signature.png.gpg      the signature scan, encrypted with scripts/encrypt-signature.sh
+#   SIGNATURE_PASSPHRASE   repository secret: decrypts the scan and encrypts the zip
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  MAX_PAGES: "2"
+
+jobs:
+  signed:
+    name: Build signed PDFs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Decrypt signature
+        env:
+          SIGNATURE_PASSPHRASE: ${{ secrets.SIGNATURE_PASSPHRASE }}
+        run: |
+          if [ ! -f signature.png.gpg ]; then
+            echo "::error::signature.png.gpg is missing. Create it with scripts/encrypt-signature.sh and commit it."
+            exit 1
+          fi
+          if [ -z "$SIGNATURE_PASSPHRASE" ]; then
+            echo "::error::The SIGNATURE_PASSPHRASE repository secret is not set."
+            exit 1
+          fi
+          gpg --batch --quiet --pinentry-mode loopback --passphrase-fd 0 \
+            --output signature.png --decrypt signature.png.gpg <<< "$SIGNATURE_PASSPHRASE"
+
+      - name: Compile signed variants
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            resume-signed.tex
+            resume-it-signed.tex
+          work_in_root_file_dir: true
+          args: -xelatex -file-line-error -halt-on-error -interaction=nonstopmode
+
+      - name: Remove decrypted signature
+        if: always()
+        run: rm -f signature.png
+
+      - name: Check page count
+        if: env.MAX_PAGES != ''
+        run: |
+          command -v pdfinfo >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils) >/dev/null
+          for f in resume-signed resume-it-signed; do
+            pages=$(pdfinfo "$f.pdf" | awk '/^Pages:/ {print $2}')
+            echo "$f.pdf has $pages page(s)"
+            if [ "$pages" -gt "$MAX_PAGES" ]; then
+              echo "::error file=$f.tex::$f.pdf has $pages pages, the limit is $MAX_PAGES"
+              exit 1
+            fi
+          done
+
+      - name: Pack into an encrypted zip
+        env:
+          SIGNATURE_PASSPHRASE: ${{ secrets.SIGNATURE_PASSPHRASE }}
+        run: |
+          repo="${GITHUB_REPOSITORY#*/}"
+          day=$(date +%F)
+          mkdir out
+          cp resume-signed.pdf    "out/Alessandro_Monticelli_CV_${repo}_EN_signed_${day}.pdf"
+          cp resume-it-signed.pdf "out/Alessandro_Monticelli_CV_${repo}_IT_firmato_${day}.pdf"
+          rm -f resume-signed.pdf resume-it-signed.pdf
+          (cd out && 7z a -tzip -mem=AES256 -p"$SIGNATURE_PASSPHRASE" ../signed-cv.zip ./*.pdf >/dev/null)
+          rm -rf out
+
+      - name: Upload encrypted zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: signed-cv
+          path: signed-cv.zip
+          retention-days: 1
+          if-no-files-found: error
