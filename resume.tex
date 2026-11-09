@@ -27,7 +27,9 @@
   \item\small{Designed and built \textbf{RagCore} at SELED, a generic RAG engine that answers questions on company data and documents, starting with Caviro's contracts and extended to Agrintesa's laboratory analyses: two-stage hybrid retrieval (PostgreSQL \texttt{pgvector} \& full-text \texttt{tsvector}, RRF, Cross-Encoder), a logit intent router, an Angular front end with Microsoft Entra ID, and SharePoint ingestion via Power Automate, under an air-gapped security model with zero direct LLM database access.}
   \item\small{Kept the core agnostic to the chosen knowledge base through declarative Knowledge Bases, where each use case is configured rather than coded: contracts for Caviro (clause search with 0.948 hit@1 retrieval and cross-contract queries) and laboratory test reports for Agrintesa (results per supply chain, residues).}
   \item\small{Reduced lab-analysis ingestion API costs by 15x in Agrintesa's Power Automate pipeline with Claude Haiku 5.5 and prompt caching.}
-  \item\small{Led the SharePoint migration of several hundred GB of Caviro marketing and sales documents from a VPN file server, with Power Automate approvals.}
+  \item\small{Led the SharePoint migration of several hundred GB of Caviro marketing and sales documents from a VPN file server, with Power Automate approvals. In production and in daily use by the Marketing and Commercial departments for cloud document storage, sharing and editing.}
+  \item\small{Automated Caviro contract ingestion with a flow modeled on Agrintesa's lab-analysis pipeline, using Claude Haiku 5.5 for metadata extraction into a SharePoint library for contract management and tracking.}
+  \item\small{Built automations that sync Agrintesa lab analyses and Caviro SharePoint contracts into a local PostgreSQL vector database (SharePoint metadata and text embeddings), feeding RagCore.}
   \item\small{Refactored a PowerApp for Italian Revenue Agency (SdI) foreign invoice XML generation (LINKER), implementing batch updates for VAT rates and exemption codes (\textit{Natura IVA}), with optimized field validation and UX performance.}
 \resumeItemListEnd
 \resumeSubheading
